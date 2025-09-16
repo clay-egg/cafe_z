@@ -6,7 +6,12 @@
 
 Cafe Z is a modern, user-friendly coffee shop application built with Flutter and Firebase. Order your favorite drinks, customize your preferences, and enjoy a seamless payment experience - all in one place.
 
-## ✨ Features
+<div align="center">
+  <img src="lib/images/Cover.png" alt="Cafe Z Cover" style="width: 100%; max-width: 1000px; border-radius: 10px; margin: 20px 0; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
+   
+</div>
+
+### ✨ Features
 
 ### 🛍️ Ordering System
 - Browse an extensive menu of coffee and beverages
@@ -40,7 +45,7 @@ Cafe Z is a modern, user-friendly coffee shop application built with Flutter and
 
 1. **Clone the repository**
    ```bash
-   git clone https://github.com/kweephyo-pmt/cafe_z.git
+   git clone [https://github.com/clay-egg/cafe_z](https://github.com/clay-egg/cafe_z).git
    cd cafe_z
    ```
 
@@ -85,7 +90,7 @@ Contributions are what make the open-source community such an amazing place to l
 5. Open a Pull Request
 
 ## 📱 Download
-
+https://play.google.com/store/apps/details?id=com.cafez.app&hl=en
 [![Get it on Google Play](https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png)](https://play.google.com/store/apps/details?id=com.cafez.app&hl=en)
 
 ---
