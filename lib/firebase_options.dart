@@ -3,19 +3,22 @@
 import 'package:firebase_core/firebase_core.dart' show FirebaseOptions;
 import 'package:flutter/foundation.dart'
     show defaultTargetPlatform, kIsWeb, TargetPlatform;
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 
 /// Default [FirebaseOptions] for use with your Firebase apps.
 ///
 /// Example:
 /// ```dart
-/// import 'firebase_options.dart';
-/// // ...
+/// await dotenv.load(); // Load environment variables
 /// await Firebase.initializeApp(
 ///   options: DefaultFirebaseOptions.currentPlatform,
 /// );
 /// ```
 class DefaultFirebaseOptions {
   static FirebaseOptions get currentPlatform {
+    // Load environment variables
+    dotenv.load();
+    
     if (kIsWeb) {
       return web;
     }
@@ -43,43 +46,43 @@ class DefaultFirebaseOptions {
     }
   }
 
-  static const FirebaseOptions web = FirebaseOptions(
-    apiKey: 'AIzaSyA4_PnxG1jsfpsd_R7ETrUxagMmJquQRas',
-    appId: '1:442439926476:web:2563b331d806f543173869',
-    messagingSenderId: '442439926476',
-    projectId: 'cafe-z',
-    authDomain: 'cafe-z.firebaseapp.com',
-    databaseURL: 'https://cafe-z-default-rtdb.firebaseio.com',
-    storageBucket: 'cafe-z.appspot.com',
-    measurementId: 'G-W3N3PMMBFC',
+  static FirebaseOptions get web => FirebaseOptions(
+    apiKey: dotenv.get('FIREBASE_WEB_API_KEY'),
+    appId: dotenv.get('FIREBASE_WEB_APP_ID'),
+    messagingSenderId: dotenv.get('FIREBASE_WEB_MESSAGING_SENDER_ID'),
+    projectId: dotenv.get('FIREBASE_WEB_PROJECT_ID'),
+    authDomain: dotenv.get('FIREBASE_WEB_AUTH_DOMAIN'),
+    databaseURL: dotenv.get('FIREBASE_WEB_DATABASE_URL'),
+    storageBucket: dotenv.get('FIREBASE_WEB_STORAGE_BUCKET'),
+    measurementId: dotenv.get('FIREBASE_WEB_MEASUREMENT_ID'),
   );
 
-  static const FirebaseOptions android = FirebaseOptions(
-    apiKey: 'AIzaSyA2LBdYsYE9Lx8orsCqYaS-QKxlNKFyRKU',
-    appId: '1:442439926476:android:45a65b3f6de1f525173869',
-    messagingSenderId: '442439926476',
-    projectId: 'cafe-z',
-    databaseURL: 'https://cafe-z-default-rtdb.firebaseio.com',
-    storageBucket: 'cafe-z.appspot.com',
+  static FirebaseOptions get android => FirebaseOptions(
+    apiKey: dotenv.get('FIREBASE_ANDROID_API_KEY'),
+    appId: dotenv.get('FIREBASE_ANDROID_APP_ID'),
+    messagingSenderId: dotenv.get('FIREBASE_ANDROID_MESSAGING_SENDER_ID'),
+    projectId: dotenv.get('FIREBASE_ANDROID_PROJECT_ID'),
+    databaseURL: dotenv.get('FIREBASE_ANDROID_DATABASE_URL'),
+    storageBucket: dotenv.get('FIREBASE_ANDROID_STORAGE_BUCKET'),
   );
 
-  static const FirebaseOptions ios = FirebaseOptions(
-    apiKey: 'AIzaSyDJNg_5B26Q2sxz8gVhINfSuDPpadEkJUk',
-    appId: '1:442439926476:ios:238b7f87396e9c65173869',
-    messagingSenderId: '442439926476',
-    projectId: 'cafe-z',
-    databaseURL: 'https://cafe-z-default-rtdb.firebaseio.com',
-    storageBucket: 'cafe-z.appspot.com',
-    iosBundleId: 'com.example.cafez',
+  static FirebaseOptions get ios => FirebaseOptions(
+    apiKey: dotenv.get('FIREBASE_IOS_API_KEY'),
+    appId: dotenv.get('FIREBASE_IOS_APP_ID'),
+    messagingSenderId: dotenv.get('FIREBASE_IOS_MESSAGING_SENDER_ID'),
+    projectId: dotenv.get('FIREBASE_IOS_PROJECT_ID'),
+    databaseURL: dotenv.get('FIREBASE_IOS_DATABASE_URL'),
+    storageBucket: dotenv.get('FIREBASE_IOS_STORAGE_BUCKET'),
+    iosBundleId: dotenv.get('FIREBASE_IOS_BUNDLE_ID'),
   );
 
-  static const FirebaseOptions macos = FirebaseOptions(
-    apiKey: 'AIzaSyDJNg_5B26Q2sxz8gVhINfSuDPpadEkJUk',
-    appId: '1:442439926476:ios:2d95e4d22ac3765a173869',
-    messagingSenderId: '442439926476',
-    projectId: 'cafe-z',
-    databaseURL: 'https://cafe-z-default-rtdb.firebaseio.com',
-    storageBucket: 'cafe-z.appspot.com',
-    iosBundleId: 'com.example.cafez.RunnerTests',
+  static FirebaseOptions get macos => FirebaseOptions(
+    apiKey: dotenv.get('FIREBASE_IOS_API_KEY'),
+    appId: '1:442439926476:ios:2d95e4d22ac3765a173869', // Different from iOS app ID
+    messagingSenderId: dotenv.get('FIREBASE_IOS_MESSAGING_SENDER_ID'),
+    projectId: dotenv.get('FIREBASE_IOS_PROJECT_ID'),
+    databaseURL: dotenv.get('FIREBASE_IOS_DATABASE_URL'),
+    storageBucket: dotenv.get('FIREBASE_IOS_STORAGE_BUCKET'),
+    iosBundleId: '${dotenv.get('FIREBASE_IOS_BUNDLE_ID')}.RunnerTests',
   );
 }
